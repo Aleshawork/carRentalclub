@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "user")
+@Table(name = "leaser")
 public class User extends BaseRecord{
 
     @Column(name = "username")
@@ -16,7 +16,7 @@ public class User extends BaseRecord{
     private String telephone;
     @Column(name = "driving_rate")
     private int drivingRate;
-    @Column(name = "fullname")
+    @Column(name = "full_name")
     private String fullName;
 
     @OneToMany(mappedBy = "user")
