@@ -40,6 +40,15 @@ public class CarService {
         return carList.stream().filter(el -> freeCar(el.getCars())).collect(Collectors.toList());
     }
 
+     /**
+         * Поиск арендованных машин
+         * @return массив {@link Car}
+         */
+        public Set<Car> findLizingCar() {
+            List<Car> carList = carRepo.getEm().createQuery("select c from Car c left join fetch c.cars", Car.class).getResultList();
+            return carList.stream().filter(el -> !freeCar(el.getCars())).collect(Collectors.toSet());
+        }
+
 
     /**
      * Поиск машин по всем параметрам, параметры добавляются в фильтрацию
