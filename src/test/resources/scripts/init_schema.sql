@@ -7,7 +7,6 @@ create table if not exists leaser (
     full_name varchar(255),
     telephone varchar(255),
     username varchar(255),
-    password varchar(255),
     primary key (id)
     );
 
@@ -62,10 +61,3 @@ create table if not exists top_of_cars (
     );
 alter table if exists top_of_cars add constraint car_id_top_fk foreign key (car_id) references car;
 alter table if exists top_of_cars add constraint user_id_Top_fk foreign key (user_id) references leaser;
-
-create table user_role (
-    user_id int8 not null,
-    roles varchar(255)
-    );
-
-alter table if exists user_role add constraint user_role_user_fk foreign key (user_id) references leaser;

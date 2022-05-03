@@ -9,8 +9,12 @@
         <sqlFile path="./db/changelog/init_schema.sql"/>
     </changeSet>
 
-<changeSet id="1650812501" author="borisov-am">
-        <sqlFile path="./db/changelog/init_data_1.sql"/>
+    <changeSet id="1650812501" author="borisov-am">
+            <sqlFile path="./db/changelog/init_data_1.sql"/>
+    </changeSet>
+
+    <changeSet id="1650812502" author="borisov-am">
+                <sqlFile path="./db/changelog/init_user.sql"/>
     </changeSet>
 
 

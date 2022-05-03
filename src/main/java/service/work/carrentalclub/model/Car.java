@@ -1,6 +1,8 @@
 package service.work.carrentalclub.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "car")
@@ -13,11 +15,26 @@ public class Car extends BaseRecord {
     @Column(name = "price")
     private Double price;
     @Column(name = "year")
-    private int year;
+    private Integer year;
     @Column(name = "mark")
     private String mark;
     @Column(name = "type_of_car")
     private String typeOfCar;
+
+    public Set<Rent> getCars() {
+        if (this.cars == null) {
+            cars = new HashSet<>();
+            return cars;
+        }
+        return cars;
+    }
+
+    public void setCars(Set<Rent> cars) {
+        this.cars = cars;
+    }
+
+    @OneToMany(mappedBy = "car")
+    private Set<Rent> cars;
 
     public String getNumber() {
         return number;
@@ -43,11 +60,11 @@ public class Car extends BaseRecord {
         this.price = price;
     }
 
-    public int getYear() {
+    public Integer getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(Integer year) {
         this.year = year;
     }
 
