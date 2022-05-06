@@ -141,6 +141,9 @@ public class User extends BaseRecord implements UserDetails {
         }
         return topOfCars;
     }
+    public boolean isAdmin() {
+        return roles.contains(Role.ADMIN);
+    }
 
     public void setTopOfCars(Set<TopOfCars> topOfCars) {
         this.topOfCars = topOfCars;

@@ -1,4 +1,5 @@
-package service.work.carrentalclub;
+package service.work.carrentalclub.service;
+
 
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -6,7 +7,6 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -15,6 +15,7 @@ import javax.persistence.PersistenceContext;
 @TestPropertySource("/application-test.properties")
 @Transactional
 @Sql(scripts ={
+        "classpath:scripts/drop_schema.sql",
         "classpath:scripts/init_schema.sql",
         "classpath:scripts/test_init_car.sql",
         "classpath:scripts/test_init_user.sql",

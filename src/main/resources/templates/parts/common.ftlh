@@ -21,9 +21,14 @@
         <style>
             .turbolinks-progress-bar {
                 height: 2px;
-                background-color: navy;
+                background-color: #f3f6f6;
             }
+            body {
+                background-image: url("https://kartinkin.net/uploads/posts/2021-01/1611212829_46-p-foni-s-mashinami-dlya-prezentatsii-49.jpg");
+            }
+
         </style>
+
     </head>
     <body>
     <#include "navbar.ftlh">

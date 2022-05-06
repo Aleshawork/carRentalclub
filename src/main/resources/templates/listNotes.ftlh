@@ -1,15 +1,17 @@
 <#import "parts/common.ftlh" as c>
 
 <@c.page>
-    Список понравившихся машин
+    <link rel="stylesheet" href="/static/style_main.css" />
+    <p class="fs-1">Список понравившихся машин</p>
+    <p></p>
 
-    <table>
-        <thead>
+    <table class="table">
+        <thead class="thead-dark">
         <tr>
-            <th>Марка</th>
-            <th>Цвет</th>
-            <th>Тип</th>
-            <th>Цена</th>
+            <th scope="col">Марка</th>
+            <th scope="col">Цвет</th>
+            <th scope="col">Тип</th>
+            <th scope="col">Цена</th>
         </tr>
         </thead>
         <tbody>
