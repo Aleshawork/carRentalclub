@@ -1,7 +1,6 @@
 package service.work.carrentalclub.service;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import service.work.carrentalclub.BaseAbstractTest;
 import service.work.carrentalclub.dto.FindCarDto;
 import service.work.carrentalclub.model.Car;
 
