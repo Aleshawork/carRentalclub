@@ -51,8 +51,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                     .rememberMe()
                 .and()
-                    .logout()
-                    .permitAll();
+                    .logout(el->
+                            el.logoutUrl("/logoutapp")
+                                    .logoutSuccessUrl("/login")
+                                    .permitAll())
+                    ;
     }
 
     @Bean
