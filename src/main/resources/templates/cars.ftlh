@@ -2,7 +2,9 @@
 
 <@c.page>
     <link rel="stylesheet" href="/static/style_main.css" />
-    <p class="fs-1">Список машин</p>
+    <div class="page-header">
+        <h1>Список машин /<small> данные автомобили доступны для аренды</small></h1>
+    </div>
     <p></p>
 
     <div class="list-group">
