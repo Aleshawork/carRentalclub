@@ -61,7 +61,9 @@ public class CarService {
     public List<Car> findByAllParametr(FindCarDto findCarDto) {
         Set<Attribute> attributeSet = new HashSet<>();
         for (Field field: findCarDto.getClass().getDeclaredFields()) {
-            attributeSet.add(new Attribute(findCarDto,field));
+            if (!field.getName().equals("active")) {
+                attributeSet.add(new Attribute(findCarDto, field));
+            }
         }
         List<Car> byAllParametr = new ArrayList<>();
         //todo: add ExceptionHandler

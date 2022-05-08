@@ -3,10 +3,6 @@
 <@c.page>
     <link rel="stylesheet" href="/static/style_main.css" />
     <div class="page-header">
-        <h1>Список машин /<small> данные автомобили доступны для аренды</small></h1>
-    </div>
-    <p></p>
-
     <div class="list-group">
         <#list cars as car>
         <a href="#" class="list-group-item" c>

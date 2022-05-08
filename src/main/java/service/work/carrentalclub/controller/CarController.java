@@ -5,7 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import service.work.carrentalclub.dto.FindCarDto;
 import service.work.carrentalclub.model.Car;
 import service.work.carrentalclub.model.TopOfCars;
 import service.work.carrentalclub.service.CarService;
@@ -56,9 +58,13 @@ public class CarController {
         //todo : add page url service by car mark
         String url = IMAGE_URL;
         model.addAttribute("page_url", url);
+        FindCarDto carDto = new FindCarDto();
+        carDto.setActive(false);
+        model.addAttribute("findCarDto", carDto);
         return "cars_carts";
     }
 
+    //todo: продумать вариант поиск по параметрам по машинам в аренде на данные момент
     @GetMapping("/lizing")
     public String allLizingCars(Model model) {
         Set<Car> lizingCar = carService.findLizingCar();
@@ -71,6 +77,17 @@ public class CarController {
         List<TopOfCars> notes = topOfCarService.findByUserId(userId);
         model.addAttribute("notes",notes);
         return "listNotes";
+    }
+
+    @PostMapping("/filter")
+    public String filterCars(Model model, FindCarDto findCarDto) {
+        if (findCarDto.getActive()) {
+            List<Car> byAllParametr = carService.findByAllParametr(findCarDto);
+            model.addAttribute("cars", byAllParametr);
+        } else {
+            model.addAttribute("cars", carService.findFreeCar());
+        }
+        return "cars_carts";
     }
 
 

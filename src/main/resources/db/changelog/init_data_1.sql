@@ -4,7 +4,9 @@ INSERT INTO general (question, data_open, type) VALUES
 INSERT INTO car (id,number, color, price, year, mark, type_of_car)
     VALUES (1,'О009НМ199', 'black', 10000.500, 2002, 'audi a4', 'sedan'),
             (2,'О012KK149', 'red', 50000.500, 2009, 'bmv x5', 'crossover'),
-            (3,'О982ФК122', 'blue', 70000.500, 2020, 'bmv x6', 'crossover');
+            (3,'О982ФК122', 'blue', 70000.500, 2020, 'bmv x6', 'crossover'),
+            (4,'1234РО344', 'white', 44000.500, 2021, 'lexus rx300', 'crossover'),
+            (5,'1234РО322', 'black', 54000.500, 2020, 'lexus nx', 'crossover');
 
 INSERT INTO leaser (id,username, email, telephone, driving_rate, full_name, password)
     VALUES (1,'IvanAdmin', 'ivan1999@mail.ru', '+79035550723', 2, 'Ivan Fedorov', '$2y$08$.UO1UQjgvYxgi.m5E8/vZuZ1UgLtdUcG64Qtu6rUygEbtAcW914DK'),
