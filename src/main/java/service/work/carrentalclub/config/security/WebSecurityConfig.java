@@ -32,24 +32,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(passwordEncoder);
     }
 
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/static/**");
-    }
 
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                     .authorizeRequests()
-                    .antMatchers("/registration").permitAll()
+                    .antMatchers("/registration", "/static/**", "/").permitAll()
                     .anyRequest().authenticated()
                 .and()
                     .formLogin()
                     .loginPage("/login")
                     .permitAll()
-                .and()
-                    .rememberMe()
                 .and()
                     .logout(el->
                             el.logoutUrl("/logoutapp")
