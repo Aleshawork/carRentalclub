@@ -2,9 +2,7 @@
 
 <@c.page>
     <link rel="stylesheet" href="/static/style_main.css" />
-    <p class="fs-1">Список машин</p>
-    <p></p>
-
+    <div class="page-header">
     <div class="list-group">
         <#list cars as car>
         <a href="#" class="list-group-item" c>

@@ -2,6 +2,7 @@ package service.work.carrentalclub.model;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -20,6 +21,29 @@ public class Car extends BaseRecord {
     private String mark;
     @Column(name = "type_of_car")
     private String typeOfCar;
+    @Transient
+    private String imageUrl;
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+
+
+    public String getMarkNumber() {
+        return markNumber;
+    }
+
+    public void setMarkNumber(String markNumber) {
+        this.markNumber = markNumber;
+    }
+
+    @Column(name = "mark_number")
+    private String markNumber;
 
     public Set<Rent> getCars() {
         if (this.cars == null) {

@@ -3,11 +3,13 @@ package service.work.carrentalclub.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.work.carrentalclub.dto.FindCarDto;
+import service.work.carrentalclub.model.BaseRecord;
 import service.work.carrentalclub.model.Car;
 import service.work.carrentalclub.model.Rent;
 import service.work.carrentalclub.repos.Attribute;
 import service.work.carrentalclub.repos.CarRepo;
 
+import javax.persistence.NoResultException;
 import java.lang.reflect.Field;
 import java.sql.Timestamp;
 import java.util.*;
@@ -59,7 +61,9 @@ public class CarService {
     public List<Car> findByAllParametr(FindCarDto findCarDto) {
         Set<Attribute> attributeSet = new HashSet<>();
         for (Field field: findCarDto.getClass().getDeclaredFields()) {
-            attributeSet.add(new Attribute(findCarDto,field));
+            if (!field.getName().equals("active")) {
+                attributeSet.add(new Attribute(findCarDto, field));
+            }
         }
         List<Car> byAllParametr = new ArrayList<>();
         //todo: add ExceptionHandler
@@ -71,6 +75,16 @@ public class CarService {
 
 
         return  byAllParametr;
+    }
+
+    /**
+     * Поиск авто по идентификатору
+     * @param recordId идентификатор авто
+     * @return сущность
+     * @throws NoResultException если результат не найден
+     */
+    public Car findById(int recordId) throws NoResultException {
+        return  (Car) carRepo.getById(recordId);
     }
 
     /**
