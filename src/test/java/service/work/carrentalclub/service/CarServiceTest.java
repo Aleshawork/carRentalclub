@@ -31,7 +31,7 @@ class CarServiceTest extends BaseAbstractTest {
         List<Car> byAllParametr = carService.findByAllParametr(
                 FindCarDto.builder()
                         .color("red")
-                        .mark("BMV").build()
+                        .mark("bmv").build()
         );
         assertEquals( 2,byAllParametr.size());
 
@@ -42,7 +42,7 @@ class CarServiceTest extends BaseAbstractTest {
         List<Car> byAllParametr = carService.findByAllParametr(FindCarDto.builder()
                 .price(12234.3)
                 .color("blue")
-                .mark("Reno")
+                .mark("reno")
                 .build());
         assertEquals(1, byAllParametr.size());
     }

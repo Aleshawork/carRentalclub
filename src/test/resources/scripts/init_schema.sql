@@ -17,6 +17,7 @@ create table if not exists car (
     number varchar(255),
     price float8,
     type_of_car varchar(255),
+    mark_number varchar(255),
     year int4,
     primary key (id)
     );
