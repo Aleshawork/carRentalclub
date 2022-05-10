@@ -14,29 +14,31 @@
     <br>
     <div class="container h-100">
         <h3>Установите фильтры для поиска</h3>
-
-            <br>
-            <h4>Цвет</h4>
-            <select class="form-select" aria-label="Цвет">
-                <option selected>Не учитывать</option>
-                <option value="1">Синий</option>
-                <option value="2">Черный</option>
-                <option value="3">Белый</option>
-                <option value="4">Красный</option>
-            </select>
-            <br>
-            <h4>Марка</h4>
-            <select class="form-select" aria-label="Марка автомобиля">
-                <option selected>BMV</option>
-                <option value="1">Reno</option>
-                <option value="2">Audi</option>
-                <option value="3">Lexus</option>
-            </select>
-        <br>
-        <br>
-        <button class="btn btn-primary" type="submit">Применить фильтры</button>
-        <br>
-        <br>
+            <form method="get" action="/car/filter">
+                    <br>
+                    <h4>Цвет</h4>
+                    <select class="form-select" aria-label="Цвет" name="color">
+                        <option selected></option>
+                        <option value="blue">Синий</option>
+                        <option value="black">Черный</option>
+                        <option value="white">Белый</option>
+                        <option value="red">Красный</option>
+                    </select>
+                    <br>
+                    <h4>Марка</h4>
+                    <select class="form-select" aria-label="Марка автомобиля" name="mark">
+                        <option selected></option>
+                        <option selected>bmv</option>
+                        <option value="reno">reno</option>
+                        <option value="audi">audi</option>
+                        <option value="lexus">lexus</option>
+                    </select>
+                <br>
+                <br>
+                <button class="btn btn-primary" type="submit">Применить фильтры</button>
+                <br>
+                <br>
+            </form>
     <div>
 
 
@@ -46,9 +48,9 @@
 
                 <div class="col-sm-6 col-md-4">
                     <div class="thumbnail">
-                        <img src=${page_url} style="max-width:69%;">
+                        <img src=${car.getImageUrl()} style="max-width:69%;">
                         <div class="caption">
-                            <class="font-weight-normal">Марка авто: ${car.mark}</p>
+                            <class="font-weight-normal">Марка авто: ${car.mark} - ${car.markNumber}</p>
                             <p class="font-weight-bolder" >Стоимость аренды: ${car.price}</p>
                             <p class="font-weight-normal" >Тип салона: ${car.typeOfCar}</p>
                             <p class="font-weight-normal" >Цвет: ${car.color}</p>
@@ -63,7 +65,5 @@
             </a>
         </#list>
         </div>
-
-        </tbody>
     </div>
 </@c.page>

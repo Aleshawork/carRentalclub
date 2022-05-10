@@ -2,8 +2,8 @@
 <div class="row mx-md-n5">
     <div class="col px-md-5">
             <div class="card" style="width: 32rem;">
-                <img src="${image}" class="card-img-top" style="max-width:120%;>
-                    <div class="card-body">
+                <img src="${car.getImageUrl()}" class="card-img-top" style="max-width:120%;>
+                    <div class=">
                             <p class="card-text">Удобный для города кроссовер, которые позволит вам комфортно и быстро добираться до работы, а также выезжать за город</p>
                     </div>
             </div>

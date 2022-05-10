@@ -3,18 +3,17 @@ package service.work.carrentalclub.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import service.work.carrentalclub.dto.FindCarDto;
 import service.work.carrentalclub.model.Car;
 import service.work.carrentalclub.model.TopOfCars;
 import service.work.carrentalclub.service.CarService;
+import service.work.carrentalclub.service.FakeImageService;
 import service.work.carrentalclub.service.TopOfCarService;
 
 import javax.persistence.NoResultException;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 
@@ -22,7 +21,8 @@ import java.util.Set;
 @RequestMapping("/car")
 public class CarController {
 
-    private final String IMAGE_URL = "https://fb.ru/media/i/2/8/9/8/7/i/28987.jpg";
+    @Autowired
+    private FakeImageService fakeImageService;
 
     @Autowired
     private CarService carService;
@@ -41,9 +41,7 @@ public class CarController {
     @GetMapping("/{carId}")
     public String findById(@PathVariable int carId, Model model) {
         try {
-            model.addAttribute("car", carService.findById(carId));
-            String image = IMAGE_URL;
-            model.addAttribute("image", image);
+            model.addAttribute("car", fakeImageService.setMark(carService.findById(carId)));
             return "car_info";
         } catch(NoResultException ex) {
             model.addAttribute("cars", carService.findFreeCar());
@@ -53,11 +51,8 @@ public class CarController {
 
     @GetMapping("/free")
     public String allFreeCars(Model model) {
-        List<Car> freeCar = carService.findFreeCar();
+        List<Car> freeCar = fakeImageService.setAllMark(carService.findFreeCar());
         model.addAttribute("cars", freeCar);
-        //todo : add page url service by car mark
-        String url = IMAGE_URL;
-        model.addAttribute("page_url", url);
         FindCarDto carDto = new FindCarDto();
         carDto.setActive(false);
         model.addAttribute("findCarDto", carDto);
@@ -79,14 +74,19 @@ public class CarController {
         return "listNotes";
     }
 
-    @PostMapping("/filter")
-    public String filterCars(Model model, FindCarDto findCarDto) {
-        if (findCarDto.getActive()) {
-            List<Car> byAllParametr = carService.findByAllParametr(findCarDto);
-            model.addAttribute("cars", byAllParametr);
-        } else {
-            model.addAttribute("cars", carService.findFreeCar());
+    //todo: убрать временный костыль с фильтрами в param запроса
+    @GetMapping("/filter")
+    public String filterCars(Model model, @RequestParam(value = "color") String color, @RequestParam("mark") String mark) {
+        FindCarDto findCarDto = new FindCarDto();
+        if (!Objects.isNull(color) && !"".equals(color)) {
+            findCarDto.setColor(color);
         }
+        if (!Objects.isNull(mark)) {
+           findCarDto.setMark(mark);
+        }
+
+        List<Car> byAllParametr = fakeImageService.setAllMark(carService.findByAllParametr(findCarDto));
+        model.addAttribute("cars", byAllParametr);
         return "cars_carts";
     }
 
