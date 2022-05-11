@@ -1,4 +1,12 @@
 # CarRentulClub service :car:
+
+## Локальный запуск приложения
+- Из корневой папки проекта выполнить **docker-compose up**
+- Приложение будет доступно по http://localhost:8081/login
+- 
+## Ролевая модель (логин/пороль)
+- Пользователь : **OlegUser/user**
+- Администратор : **IvanAdmin/admin**
 ## 
 
 ## Что такое CarRentalClub ?  
