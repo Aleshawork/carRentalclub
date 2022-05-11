@@ -1,0 +1,21 @@
+version: "3.7"
+services:
+  api_service:
+    build: .
+    restart: always
+    ports:
+      - "8081:8081"
+    depends_on:
+      - db
+    links:
+      - db:database
+  db:
+    image: "postgres:11.4"
+    ports:
+      - "5432:5432"
+    restart: always
+    container_name: db
+    environment:
+      POSTGRES_DB: car_rental_club
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
