@@ -17,5 +17,9 @@
                 <sqlFile path="classpath:db/changelog/init_user.sql"/>
     </changeSet>
 
+    <changeSet id="1650812503" author="borisov-am">
+                    <sqlFile path="classpath:db/changelog/init_document.sql"/>
+        </changeSet>
+
 
 </databaseChangeLog>
