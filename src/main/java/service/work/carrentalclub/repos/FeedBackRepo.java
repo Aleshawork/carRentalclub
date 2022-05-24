@@ -20,7 +20,7 @@ public class FeedBackRepo extends CrudAbstractRepository{
     }
 
     @Override
-    public void delete() {
+    public void delete(BaseRecord baseRecord) {
 
     }
 }

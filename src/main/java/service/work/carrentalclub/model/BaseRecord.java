@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class BaseRecord {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(generator = "increment")
     @Column(name = "id")
     private int recordId;
 

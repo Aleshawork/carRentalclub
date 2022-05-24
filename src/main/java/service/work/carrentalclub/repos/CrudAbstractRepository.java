@@ -15,7 +15,7 @@ public abstract class CrudAbstractRepository {
     
     public abstract List<? extends BaseRecord> getAll();
     public abstract BaseRecord getById(int recordId) throws NoResultException;
-    public abstract void delete();
+    public abstract void delete( BaseRecord baseRecord);
 
     public   EntityManager getEm() {
         return em;

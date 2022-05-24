@@ -57,7 +57,7 @@
                             <br>
                             <p class="font-weight-normal">
                                 <a href="/car/${car.recordId}" class="btn btn-primary" role="button">Подробнее</a>
-                                <a href="#" class="btn btn-default" role="button">Добавить в избранное</a>
+                                <a href="/car/addtop/${car.recordId}" class="btn btn-default" role="button">Добавить в избранное</a>
                             </p>
                         </div>
                     </div>

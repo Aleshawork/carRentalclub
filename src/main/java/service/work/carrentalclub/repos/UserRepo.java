@@ -29,7 +29,7 @@ public class UserRepo extends CrudAbstractRepository{
     }
 
     @Override
-    public void delete() {
+    public void delete(BaseRecord baseRecord) {
 
     }
 }

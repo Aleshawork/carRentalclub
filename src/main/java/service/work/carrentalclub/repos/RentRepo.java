@@ -21,7 +21,7 @@ public class RentRepo extends CrudAbstractRepository {
     }
 
     @Override
-    public void delete() {
+    public void delete(BaseRecord baseRecord) {
 
     }
 }
